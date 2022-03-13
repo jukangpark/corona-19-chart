@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/corona-19-chart/static/js/main.895df346.js",
+    "index.html": "/corona-19-chart/index.html",
+    "main.895df346.js.map": "/corona-19-chart/static/js/main.895df346.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.895df346.js"
+  ]
+}
