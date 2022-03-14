@@ -1,13 +1,19 @@
 import ApexChart from "react-apexcharts";
 
-const Chart = ({ confirmedCase, deaths }: any) => {
+interface IProps {
+  totalCnt: number[];
+}
+
+const Chart = ({ totalCnt }: IProps) => {
   return (
-    <div style={{ width: "600px" }}>
+    <div style={{ width: "1200px", margin: "0 auto" }}>
       <ApexChart
-        type="line"
+        type="bar"
         series={[
-          { name: "확진자 수", data: confirmedCase },
-          { name: "사망자 수", data: deaths },
+          {
+            name: "확진자 수",
+            data: totalCnt,
+          },
         ]}
         options={{
           theme: { mode: "light" },
@@ -17,17 +23,42 @@ const Chart = ({ confirmedCase, deaths }: any) => {
             toolbar: { show: false },
             background: "transparent",
           },
-          grid: { show: false },
-          stroke: { curve: "smooth", width: 4 },
-          yaxis: {
-            show: false,
+
+          plotOptions: {
+            bar: {
+              columnWidth: "45%",
+              distributed: true,
+            },
           },
 
-          fill: {
-            type: "gradient",
-            gradient: { gradientToColors: ["#0be881"], stops: [0, 100] },
+          grid: { show: false },
+          xaxis: {
+            categories: [
+              "seoul",
+              "busan",
+              "daegu",
+              "incheon",
+              "gwangju",
+              "daejeon",
+              "ulsan",
+              "sejong",
+              "gyeonggi",
+              "gangwon",
+              "chungbuk",
+              "chungnam",
+              "jeonbuk",
+              "jeonnam",
+              "gyeongbuk",
+              "gyeongnam",
+              "jeju",
+            ],
+            labels: {
+              style: {
+                fontSize: "12px",
+              },
+            },
           },
-          colors: ["#0fbcf9"],
+
           tooltip: {
             y: {
               formatter: (value) => `${value} 명`,
