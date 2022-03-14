@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
 import { Title } from "../components/Title";
 import Chart from "../components/Chart";
 import Tabs from "../components/Tabs";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
+import Pie from "../components/Pie";
 
 interface ICity {
   countryNm: string;
@@ -104,6 +104,7 @@ const Home = () => {
         </Helmet>
       </HelmetProvider>
       <Title>국내 코로나 19 확진자 및 사망자 현황</Title>
+
       <Tabs
         totalCntMatch={totalCntMatch !== null}
         deathCntMatch={deathCntMatch !== null}
@@ -116,6 +117,10 @@ const Home = () => {
           <Chart totalCnt={deathCnt} />
         </Route>
       </Switch>
+      <div style={{ display: "flex" }}>
+        <Pie totalCnt={totalCnt} title={"코로나 확진자 현황"} />
+        <Pie totalCnt={deathCnt} title={"코로나 사망자 현황"} />
+      </div>
     </div>
   );
 };
