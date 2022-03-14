@@ -18,8 +18,7 @@ const Chart = ({ totalCnt }: IProps) => {
         options={{
           theme: { mode: "light" },
           chart: {
-            height: 500,
-            width: 300,
+            width: "100%",
             toolbar: { show: false },
             background: "transparent",
           },

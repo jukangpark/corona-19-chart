@@ -104,7 +104,10 @@ const Home = () => {
         </Helmet>
       </HelmetProvider>
       <Title>국내 코로나 19 확진자 및 사망자 현황</Title>
-      <Tabs totalCntMatch={totalCntMatch !== null} />
+      <Tabs
+        totalCntMatch={totalCntMatch !== null}
+        deathCntMatch={deathCntMatch !== null}
+      />
       <Switch>
         <Route path={`/확진자`}>
           <Chart totalCnt={totalCnt} />
