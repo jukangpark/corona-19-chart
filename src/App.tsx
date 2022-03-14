@@ -1,42 +1,47 @@
+import ApexChart from "react-apexcharts";
 import { useEffect, useState } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Title } from "./components/Title";
+import Chart from "./components/Chart";
 
-interface IData {
-  기준연도: string;
-  기준월: string;
-  데이터기준일자: string;
-  ["확진자 수"]: string;
-  ["사망자 수"]: string;
-}
+// interface IData {
+//   기준연도: string;
+//   기준월: string;
+//   데이터기준일자: string;
+//   ["확진자 수"]: string;
+//   ["사망자 수"]: string;
+// }
 
 const App = () => {
-  const [data, setData] = useState<IData[]>();
-  const serviceKey =
-    "Db2WjUGNkkI1uep4Cdnf1NcQLLXLST05FgSCfSXVPC%2BYIPgFCxyGM9bxZ7EcS7XiKnomAmngmJE%2B5ETJJza1xQ%3D%3D";
+  const [data, setData] = useState();
+  const [isLoading, setLoading] = useState(true);
 
+  const API_KEY = "7wdSpAqc2OfEtzs6DHKlZFkr5QxWX1PeN";
   useEffect(() => {
-    fetch(
-      `https://api.odcloud.kr/api/15098765/v1/uddi:0e6d8456-49b0-4880-9dc1-f1c92048ed87?page=1&perPage=10&serviceKey=${serviceKey}`
-    )
+    fetch(`https://api.corona-19.kr/korea/beta/?serviceKey=${API_KEY}`)
       .then((res) => res.json())
-      .then((data) => setData(data.data));
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
   }, []);
 
+  console.log(data);
+
+  // const confirmedCase = data?.map((data) => data["확진자 수"]);
+  // const deaths = data?.map((data) => data["사망자 수"]);
   return (
     <div>
-      <Title>광주광역시 남구 코로나 19 확진자 및 사망자 현황</Title>
-      <ul>
-        {data?.map((object, key) => (
-          <li key={key} style={{ display: "flex" }}>
-            <div>{object["기준연도"]}</div>
-            <div>{object["기준월"]}</div>
-            <div>{object["데이터기준일자"]}</div>
-            <div>확진자 수 : {object["확진자 수"]}</div>
-          </li>
-        ))}
-      </ul>
+      <HelmetProvider>
+        <Helmet>
+          <title>국내 코로나 19 Chart</title>
+        </Helmet>
+      </HelmetProvider>
+      <Title>국내 코로나 19 확진자 및 사망자 현황</Title>
+      {/* {isLoading ? null : (
+        <Chart confirmedCase={confirmedCase} deaths={deaths} />
+      )} */}
     </div>
   );
 };
-
 export default App;
