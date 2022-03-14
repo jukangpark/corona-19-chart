@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/corona-19-chart/static/css/main.1a8a0596.css",
-    "main.js": "/corona-19-chart/static/js/main.d89ee1df.js",
+    "main.js": "/corona-19-chart/static/js/main.3055d850.js",
     "index.html": "/corona-19-chart/index.html",
     "main.1a8a0596.css.map": "/corona-19-chart/static/css/main.1a8a0596.css.map",
-    "main.d89ee1df.js.map": "/corona-19-chart/static/js/main.d89ee1df.js.map"
+    "main.3055d850.js.map": "/corona-19-chart/static/js/main.3055d850.js.map"
   },
   "entrypoints": [
     "static/css/main.1a8a0596.css",
-    "static/js/main.d89ee1df.js"
+    "static/js/main.3055d850.js"
   ]
 }
